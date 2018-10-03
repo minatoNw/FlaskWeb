@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+        docker-web-ssl:
+                build: .
+                ports:
+                        - "5000:5000"
+                environment:
+                        ENV: DEV
+                volumes:
+                        - ./app:/app
+                links:
+                        - dnmonster
+                networks:
+                        docker-web-ssl_net:
+                                ipv4_address: 172.100.0.2
+
+
+        dnmonster:
+                image: amouat/dnmonster:1.0
+                networks:
+                        docker-web-ssl_net:
+                                ipv4_address: 172.100.0.3
+
+networks:
+        docker-web-ssl_net:
+                driver: bridge
+                ipam:
+                        driver: default
+                        config:
+                                - subnet: 172.100.0.0/16
+
+
+
+
