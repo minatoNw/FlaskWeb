@@ -12,23 +12,23 @@ services:
                 links:
                         - dnmonster
                 networks:
-                        docker-web-ssl_net:
-                                ipv4_address: 172.100.0.2
+                        flaskweb_net:
+                                ipv4_address: 172.102.0.2
 
 
         dnmonster:
                 image: amouat/dnmonster:1.0
                 networks:
-                        docker-web-ssl_net:
-                                ipv4_address: 172.100.0.3
+                        flaskweb_net:
+                                ipv4_address: 172.102.0.3
 
 networks:
-        docker-web-ssl_net:
+        flaskweb_net:
                 driver: bridge
                 ipam:
                         driver: default
                         config:
-                                - subnet: 172.100.0.0/16
+                                - subnet: 172.102.0.0/16
 
 
 
