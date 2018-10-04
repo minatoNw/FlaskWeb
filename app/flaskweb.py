@@ -32,7 +32,7 @@ def get_icon(name):
     req = requests.get("http://172.102.0.3:8080/monster/" + name + "?size=80")
     image = req.content
 
-    return Response(image, miemtype="image/png")
+    return Response(image, mimetype="image/png")
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
