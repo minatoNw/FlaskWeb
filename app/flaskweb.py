@@ -28,7 +28,7 @@ def main():
     return header + body + footer
 
 @app.route('/monster/<name>')
-def get_icon(name)
+def get_icon(name):
     req = requests.get("http://172.102.0.3:8080/monster/" + name + "?size=80")
     image = req.content
 
